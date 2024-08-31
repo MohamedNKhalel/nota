@@ -1,0 +1,54 @@
+.main{
+    min-height: 100vh;
+    background-image:linear-gradient(to right,rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url(../../../assets/images/5192479.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.content{
+    width: 70%;
+}
+.google{
+    a{
+        font-weight: 500;
+        transition: all .5s;
+        &:hover{
+            background-color: #0043a8 !important;
+        }
+    }
+}
+.signup{
+    button{
+        width: 100%;
+        background-color: #FF5757;
+        padding: 10px 20px;
+        font-size: 1.0625rem;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+        transition: all .5s ease;
+        &:hover{
+            background-color: #ea4545;
+        }
+        &:disabled{
+            background-color: #ff57576e;
+        }
+    }
+}
+.row{
+    // background-image: linear-gradient(#050A19,#001C39);
+    background-color: white;
+    border-top-left-radius: 120px !important;
+    padding-block: 0;
+}
+.signup-image{
+    background-color: #FF5757;
+}
+@media screen and (max-width:768px) {
+    .content{
+        width: 95% !important;
+        margin-top: 100px;
+    }
+}

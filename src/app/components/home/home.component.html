@@ -1,0 +1,27 @@
+<section class=" main" >
+    <div class="container  content">
+        <div class="my-3">
+            <button type="button" (click)="add()" class="new-btn d-block ms-auto">New Note <i class="fa-regular fa-plus"></i></button>
+        </div>
+        <div class="row g-4" *ngIf="notes;else msg">
+            <div *ngFor="let note of notes" class="col-md-4">
+                <div class=" note-card shadow">
+                    <div class="head position-relative">
+                        <i (click)="delete(note)" class="fa-solid fa-trash"></i>
+                        <h1 class="pt-3 fw-bolder text-center">{{note.title}}</h1>
+                    </div>
+                    <div class="body">
+                        <p>{{note.description}}</p>
+                    </div>
+                    <div class="footer position-relative">
+                            <i (click)="edit(note)" class="fa-solid fa-pencil"></i>
+                            <p class=" fw-bolder text-end">{{note.date}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #msg>
+    <h2  class="text-center temp">Your Notes Is Empty...</h2>
+</ng-template>

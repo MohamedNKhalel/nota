@@ -1,0 +1,67 @@
+<section class="main  d-flex justify-content-center align-items-center">
+    <div class="container content">
+        <div class="row shadow  rounded-4 overflow-hidden align-items-center">
+            <div class="col-md-6 p-5">
+                <div>
+                    <h2 class="text-muted">Enjoy Our Uniqe Features</h2>
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div>
+                            <mat-form-field class="w-100 " appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input formControlName="email" type="email"  placeholder="example@gmail.com" matInput>
+                                <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">
+                                    please enter your email
+                                </mat-error>
+                                <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">
+                                    Enter a <strong>valid</strong> email address
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="w-100 position-relative" appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input formControlName="password" [type]="passEyeFlag?'text' : 'password' " placeholder="enter you password" matInput>
+                                <i (click)="eyeToggle()" *ngIf="!passEyeFlag" class="fa-solid fa-eye position-absolute end-0 top-50 translate-middle-y cursor-pointer"></i>
+                                <i (click)="eyeToggle()" *ngIf="passEyeFlag" class="fa-solid fa-eye-slash position-absolute end-0 top-50 translate-middle-y cursor-pointer"></i>
+                                <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">
+                                    please enter your password
+                                </mat-error>    
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center login">
+                            <button  [disabled]="loginForm.invalid" type="submit" class="btn-main ">Login</button>
+                            <a (click)="resetFormFlag = true" class="text-primary text-decoration-none cursor-pointer">forget password ?</a>
+                        </div>
+                        <p *ngIf="errMsg" class="alert alert-danger mt-1 text-center">{{errMsg}}</p>
+                        <p class="text-center mt-4">don't have an account ? <a class="text-primary text-decoration-none cursor-pointer" routerLink="/register">Register Now</a></p>
+                        <div class="google">
+                            <a (click)="signInWithGoogle()" class="p-3 bg-primary fs-6 cursor-pointer text-decoration-none text-white rounded-2 w-100 d-block text-center">Continue with google <i class="fa-brands fa-google text-danger"></i></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 login-image">
+                <div class="p-3">
+                    <img src="../../../assets/images/undraw_enter_uhqk.svg" class="w-100 " alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div (click)="resetFormFlag = false" *ngIf="resetFormFlag" class="forget-form position-absolute top-0 bottom-0 start-0 end-0 d-flex justify-content-center align-items-center">
+    <div  (click)="stop($event)" class="w-50 bg-white p-4 rounded-2 position-relative">
+        <p class="text-muted text-center">Enter Your email and password reset form will be sent to you</p>
+        <i (click)="resetFormFlag =false" class="fas fa-xmark-circle position-absolute"></i>
+        <form>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input (input)="verifyEmail()" [(ngModel)]="passResetEmail" name="email" type="text" matInput  placeholder="example@gmail.com">
+                <mat-error>
+                    please enter your email
+                </mat-error>
+            </mat-form-field>
+            <button (click)="sendVerify()" [disabled]="!resetFlag" type="button"><span *ngIf="!loading">Send</span> <i *ngIf="loading" class="fa fa-spin fa-spinner"></i></button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<section class="d-flex justify-content-center align-items-center">
+        <div class="w-100 bg-white p-4 shadow rounded-3">
+            <form [formGroup]="addNoteForm" (ngSubmit)="addNewNote()"  action="">
+                <div>
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Title</mat-label>
+                        <input formControlName="title" type="text" matInput placeholder="name of the thing">
+                        <mat-error *ngIf="addNoteForm.get('title')?.errors?.['required']">
+                            title is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Description</mat-label>
+                        <textarea formControlName="description" matInput placeholder="Enter your description" rows="4"></textarea>
+                        <mat-error *ngIf="addNoteForm.get('description')?.errors?.['required']">
+                            description is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex  justify-content-center gap-4">
+                    <button (click)="close()" type="button" class="btn btn-outline-danger  ">Close</button>
+                    <button *ngIf="!status" [disabled]="addNoteForm.invalid" type="submit" class="btn btn-outline-primary">Add</button>
+                    <button (click)="editNote()" *ngIf="status" [disabled]="addNoteForm.invalid" type="button" class="btn btn-outline-warning">Edit</button>
+                </div>
+            </form>
+        </div>
+</section>
