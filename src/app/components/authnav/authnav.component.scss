@@ -6,3 +6,10 @@
 .navbar{
     background-color: transparent !important;
 }
+
+@media screen and (max-width:768px) {
+    .navbar{
+        box-shadow: 0px 0px 8px .5px #227B94 ;
+        background-color: #227b946f !important;
+    }
+}
