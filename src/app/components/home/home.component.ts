@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
         this.confirmDelete(note);
         Swal.fire(
           'Deleted!',
-          'Patient has been deleted.',
+          'Note has been deleted.',
           'success'
         );
       }
